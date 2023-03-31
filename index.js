@@ -5,14 +5,40 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  // Prompt player for their choice
-  const playerSelection = prompt(
-    "Enter your choice (rock, paper, or scissors):"
-  );
+  // Create if statement to handle the different conditions of the selections made by the computer and the player
+  if (playerSelection === computerSelection) {
+    return "It's a tie!";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    return `You win! ${playerSelection} beats ${computerSelection}`;
+  } else {
+    return `You lose! ${computerSelection} beats ${playerSelection}`;
+  }
+}
 
-  // Convert playerSelection to lowercase to make it case-insensitive
-  playerSelection = playerSelection.toLowerCase();
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
 
-  // Generate computer's move
-  const computerSelection = getComputerChoice();
+  for (let i = 0; i < 5; i++) {
+    // Prompt player for their choice
+    let playerSelection = prompt(
+      "Enter your choice (rock, paper, or scissors):"
+    );
+    // Generate computer's move
+    let computerSelection = getComputerChoice();
+
+    let result = playRound(playerSelection.toLowerCase(), computerSelection);
+
+    console.log(result);
+
+    if (result.includes("win")) {
+      playerScore++;
+    } else if (result.includes("lose")) {
+      computerScore++;
+    }
+  }
 }
