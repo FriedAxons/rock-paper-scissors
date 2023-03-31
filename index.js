@@ -28,11 +28,24 @@ function game() {
     let playerSelection = prompt(
       "Enter your choice (rock, paper, or scissors):"
     );
+
+    // Check if player's input is valid
+    while (
+      !(
+        playerSelection === "rock" ||
+        playerSelection === "paper" ||
+        playerSelection === "scissors"
+      )
+    ) {
+      playerSelection = prompt(
+        "Invalid input. Please choose rock, paper, or scissors"
+      );
+    }
+
     // Generate computer's move
     let computerSelection = getComputerChoice();
 
     let result = playRound(playerSelection.toLowerCase(), computerSelection);
-
     console.log(result);
 
     if (result.includes("win")) {
@@ -41,4 +54,17 @@ function game() {
       computerScore++;
     }
   }
+
+  console.log(`Player score: ${playerScore}`);
+  console.log(`Computer score: ${computerScore}`);
+
+  if (playerScore > computerScore) {
+    console.log("You win the game!");
+  } else if (computerScore > playerScore) {
+    console.log("Computer wins the game!");
+  } else {
+    console.log("It's a tie game!");
+  }
 }
+
+game();
