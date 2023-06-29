@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    const choices = ["rock", "paper", "scissors"];
+    const choices = ["Rock", "Paper", "Scissors"];
     const randomIndex = Math.floor(Math.random() * 3);
     return choices[randomIndex];
 }
@@ -9,9 +9,9 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "It's a tie!";
     } else if (
-        (playerSelection === "rock" && computerSelection === "scissors") ||
-        (playerSelection === "paper" && computerSelection === "rock") ||
-        (playerSelection === "scissors" && computerSelection === "paper")
+        (playerSelection === "Rock" && computerSelection === "Scissors") ||
+        (playerSelection === "Paper" && computerSelection === "Rock") ||
+        (playerSelection === "Scissors" && computerSelection === "Paper")
     ) {
         return `You win! ${playerSelection} beats ${computerSelection}`;
     } else {
@@ -69,9 +69,9 @@ function playGame(playerSelection) {
 }
 
 // Add event listeners to the buttons
-rockBtn.addEventListener("click", () => playGame("rock"));
-paperBtn.addEventListener("click", () => playGame("paper"));
-scissorsBtn.addEventListener("click", () => playGame("scissors"));
+rockBtn.addEventListener("click", () => playGame("Rock"));
+paperBtn.addEventListener("click", () => playGame("Paper"));
+scissorsBtn.addEventListener("click", () => playGame("Scissors"));
 
 // function game() {
 //   let playerScore = 0;
