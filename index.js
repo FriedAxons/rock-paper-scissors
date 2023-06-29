@@ -23,6 +23,30 @@ function playRound(playerSelection, computerSelection) {
 const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
+const resultDiv = document.getElementById("resultDiv");
+const scoreDiv = document.getElementById("scoreDiv");
+
+let playerScore = 0;
+let computerScore = 0;
+
+function updateResult(result) {
+    resultDiv.textContent = result;
+}
+
+function playGame(playerSelection) {
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    updateResult(result);
+
+    if (result.includes("win")) {
+        playerScore++;
+    } else if (result.includes("lose")) {
+        computerScore++;
+    }
+
+    updateScore();
+    checkGameEnd();
+}
 
 // Add event listeners to the buttons
 rockBtn.addEventListener("click", () => playGame("rock"));
