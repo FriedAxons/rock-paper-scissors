@@ -29,8 +29,28 @@ const scoreDiv = document.getElementById("scoreDiv");
 let playerScore = 0;
 let computerScore = 0;
 
+function updateScore() {
+    scoreDiv.textContent = `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
+}
+
 function updateResult(result) {
     resultDiv.textContent = result;
+}
+
+function checkGameEnd() {
+    if (playerScore === 5) {
+        resultDiv.textContent = "You win the game!";
+        disableButtons();
+    } else if (computerScore === 5) {
+        resultDiv.textContent = "Computer wins the game!";
+        disableButtons();
+    }
+}
+
+function disableButtons() {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
 }
 
 function playGame(playerSelection) {
